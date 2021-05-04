@@ -8,6 +8,7 @@ const initialState = {
   product: undefined,
   getProducts: () => {},
   getSingleProduct: () => {},
+  priceDecimal: (num: number) => " "
 };
 
 // Create our global reducer
@@ -64,6 +65,11 @@ export const GlobalProvider: React.FC = ({ children }) => {
       console.log(e);
     }
   };
+  
+  {/** adds the two spaces after the decimal on the price */}
+  const priceDecimal = (num: number) => {
+    return num.toFixed(2);
+  }
 
   return (
     <GlobalContext.Provider
@@ -73,6 +79,7 @@ export const GlobalProvider: React.FC = ({ children }) => {
         product: state.product,
         getProducts,
         getSingleProduct,
+        priceDecimal,
       }}>
       {children} {/* <AppRouter/> */}
     </GlobalContext.Provider>
