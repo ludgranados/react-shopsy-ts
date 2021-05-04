@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 
 const SingleProductCard = () => {
-    const { product } = useContext(GlobalContext);
+    const { product, priceDecimal } = useContext(GlobalContext);
 
     if (!product) {
         return (
@@ -14,6 +14,8 @@ const SingleProductCard = () => {
           </div>
         );
       }
+      
+      
 
   return (
     <div id='product'>
@@ -54,7 +56,7 @@ const SingleProductCard = () => {
                   <h3 className='card-title'>
                     {product.title}
                     <div className=''>
-                      <small className='text-info'>${product.price}</small>
+                      <small className='text-info'>${priceDecimal(+product.price)}</small>
                     </div>
                   </h3>
 
@@ -94,7 +96,7 @@ const SingleProductCard = () => {
 
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
