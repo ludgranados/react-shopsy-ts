@@ -1,6 +1,11 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
+import { setTypeColor } from '../services';
+
+const categories = [
+  '',
+];
 
 const SingleProductCard = () => {
     const { product, priceDecimal } = useContext(GlobalContext);
@@ -65,9 +70,14 @@ const SingleProductCard = () => {
                     <h4>Description</h4>
                     <p>{product.description}</p>
                     <div>
-                      <span className='badge badge-warning'>
-                        {product.category}
+                  
+                      <span 
+                      className='badge text-white'
+                      style={{ backgroundColor: setTypeColor(product.category) }}
+                      >
+                      {product.category}
                       </span>
+                      
                     </div>
                   </div>
 
